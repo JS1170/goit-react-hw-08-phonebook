@@ -6,7 +6,7 @@ import { getIsLoading } from 'Redux/contacts/contactsSelector';
 
 export function ContactItem({ id, name, number, deleteBtn }) {
   // const [localLoading, setLocalLoading] = useState(false);
-  // const isLoading = useSelector(getIsLoading);
+  const isLoading = useSelector(getIsLoading);
 
   return (
     <li className={scss.item}>
