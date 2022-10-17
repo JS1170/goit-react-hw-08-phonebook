@@ -16,7 +16,7 @@ import {
   getFilter,
 } from 'Redux/contacts/contactsSelector';
 import { useNavigate } from 'react-router-dom';
-import scss from './ContactsView.module.scss';
+// import scss from './ContactsView.module.scss';
 
 export function ContactsView() {
   // const state = useSelector(state => state);
