@@ -1,0 +1,22 @@
+.logoutBtn {
+border-radius: 4px;
+padding: 10px;
+min-width: 80px;
+border: 1px solid transparent;
+font-size: 14px;
+color: white;
+background-color: rgb(17, 161, 244);
+
+&:focus,
+    &:hover,
+    &:visited,
+    &:link,
+    &:active {
+        text-decoration: none;
+    }
+
+    &:focus,
+    &:hover {
+        color: #ffffff;
+    }
+}
