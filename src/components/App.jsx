@@ -1,55 +1,62 @@
-import { useEffect } from 'react';
+import { Navigate, Route, Routes } from 'react-router-dom';
+import { Layout } from './Layout/Layout';
+import { ContactsView } from '../Pages/ContactsView/ContactsView';
+import { RegisterView } from '../Pages/RegisterView/RegisterView';
+import { LoginView } from '../Pages/LoginView/LoginView';
+import { HomePage } from '../Pages/HomePage/HomePage';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeFilter } from 'Redux/contactsSlice';
-import {
-  addContact,
-  deleteContact,
-  fetchContacts,
-} from 'Redux/contactsOperations';
-import ContactForm from './ContactForm/ContactForm';
-import { ContactList } from './ContactList/ContactList';
-import { Filter } from './Filter/Filter';
+import { getIsFetchingCurrentUser } from 'Redux/auth/authSelectors';
+import { useEffect } from 'react';
+import { fetchCurrentUser } from 'Redux/auth/authOperations';
+import { PrivateRoute } from './PrivateRoute/PrivateRoute';
+import { PublicRoute } from './PublicRoute/PublicRoute';
 
-export default function App() {
-  const state = useSelector(state => state);
+export function App() {
   const dispatch = useDispatch();
+  const isFetchingCurrentUser = useSelector(getIsFetchingCurrentUser);
   useEffect(() => {
-    dispatch(fetchContacts());
+    dispatch(fetchCurrentUser());
   }, [dispatch]);
-
-  const submitFormValue = newContactObject => {
-    if (checkName(newContactObject.name)) {
-      alert(`${newContactObject.name} is already in contacts.`);
-      return;
-    }
-    dispatch(addContact(newContactObject));
-  };
-
-  const checkName = name => {
-    return state.contacts.items.find(
-      contact => contact.name.toLowerCase() === name.toLowerCase()
-    );
-  };
-
-  const filterContacts = () => {
-    return state.contacts.items.filter(contact => {
-      return contact.name.toLowerCase().includes(state.filter.toLowerCase());
-    });
-  };
-
   return (
-    <div style={{ marginLeft: '40px' }}>
-      <h1>Phonebook</h1>
-      <ContactForm submitForm={submitFormValue} />
+    isFetchingCurrentUser && (
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route
+            index
+            element={
+              <PublicRoute>
+                <HomePage />
+              </PublicRoute>
+            }
+          ></Route>
 
-      <h2>Contacts</h2>
-      <Filter
-        onChangeFilter={event => dispatch(changeFilter(event.target.value))}
-      />
-      <ContactList
-        contacts={filterContacts()}
-        deleteBtn={id => dispatch(deleteContact(id))}
-      />
-    </div>
+          <Route
+            path="contacts"
+            element={
+              <PrivateRoute redirect="/login">
+                <ContactsView />
+              </PrivateRoute>
+            }
+          ></Route>
+          <Route
+            path="register"
+            element={
+              <PublicRoute restricted redirect="/contacts">
+                <RegisterView />
+              </PublicRoute>
+            }
+          ></Route>
+          <Route
+            path="login"
+            element={
+              <PublicRoute restricted redirect="/contacts">
+                <LoginView />
+              </PublicRoute>
+            }
+          ></Route>
+          <Route path="*" element={<Navigate to="/" />}></Route>
+        </Route>
+      </Routes>
+    )
   );
 }

@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import scss from './contactForm.module.scss';
 import { Formik, ErrorMessage, Form, Field } from 'formik';
 import * as yup from 'yup';
+import { useSelector } from 'react-redux';
+import { getIsLoading } from 'Redux/contacts/contactsSelector';
 
 const FormError = ({ name }) => {
   return <ErrorMessage name={name} render={message => <p>{message}</p>} />;
@@ -11,12 +13,13 @@ const FormError = ({ name }) => {
 
 const schema = yup
   .object()
-  .shape({ name: yup.string().required(), phone: yup.string().required() });
+  .shape({ name: yup.string().required(), number: yup.string().required() });
 
-export default function ContactForm({ submitForm }) {
-  const baseValues = { name: '', phone: '' };
-  const onSubmitChange = ({ name, phone }, { resetForm }) => {
-    const newContact = { name, phone };
+export function ContactForm({ submitForm }) {
+  const isLoading = useSelector(getIsLoading)
+  const baseValues = { name: '', number: '' };
+  const onSubmitChange = ({ name, number }, { resetForm }) => {
+    const newContact = { name, number };
     submitForm(newContact);
     resetForm();
   };
@@ -49,15 +52,15 @@ export default function ContactForm({ submitForm }) {
             // value={phone}
             // onChange={e => setNumber(e.target.value)}
             type="tel"
-            name="phone"
+            name="number"
             // pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
             // title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             // required
           />
-          <FormError name="name" title="title" />
+          <FormError name="number" title="title" />
         </label>
-        <button className={scss.btn} type="submit">
-          Add contact
+        <button className={scss.btn} type="submit" disabled={isLoading
+        }>{isLoading? 'Loading...' : 'Add contact'}
         </button>
       </Form>
     </Formik>
