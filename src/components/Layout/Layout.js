@@ -5,6 +5,7 @@ import { getIsLoggedIn } from '../../Redux/auth/authSelectors';
 import { useSelector } from 'react-redux';
 import scss from '../Layout/Layout.module.scss';
 
+
 export function Layout() {
   const isLoggedIn = useSelector(getIsLoggedIn);
 
@@ -15,13 +16,21 @@ export function Layout() {
           <NavLink className={scss.navlink} end to="/">
             Phone<span className={scss.navBook}>book</span>
           </NavLink>
-          {isLoggedIn && <NavLink className={scss.navlink} to="/contacts">Contacts</NavLink>}
+          {isLoggedIn && (
+            <NavLink className={scss.navlink} to="/contacts">
+              Contacts
+            </NavLink>
+          )}
           {isLoggedIn ? (
             <UserMenu />
           ) : (
-              <div className={scss.register}>
-              <NavLink className={scss.navlink}  to="/login">Log in</NavLink>
-              <NavLink className={scss.navlink}  to="/register">Register</NavLink>
+            <div className={scss.register}>
+              <NavLink className={scss.navlink} to="/login">
+                Log in
+              </NavLink>
+              <NavLink className={scss.navlink} to="/register">
+                Register
+              </NavLink>
             </div>
           )}
         </nav>

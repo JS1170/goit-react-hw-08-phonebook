@@ -1,10 +1,6 @@
-// .layoutContainer {
-//   display: block;
-// }
-
 .headerLayout {
   width: auto;
-  // position: relative;
+
   border-bottom: 1px solid grey;
   padding: 14px;
   font-size: 24px;
@@ -19,10 +15,7 @@
   align-items: center;
 }
 
-
-
 .navlink {
-    // position: relative;
   text-decoration: none;
   color: rgb(56, 56, 56);
 }
@@ -30,16 +23,6 @@
 .navBook {
   color: #71928a;
 }
-
-//   display: block;
-//   font-size: 24px;
-//   font-weight: 700;
-//   letter-spacing: 1.5px;
-//   text-decoration: none;
-//   text-shadow: 1px 0 1px wheat, 0 1px 1px wheat, -1px 0 1px wheat;
-//   text-transform: uppercase;
-//   transition: color 0.25s linear;
-// }
 
 .register {
   display: flex;

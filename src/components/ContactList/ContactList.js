@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
 import { ContactItem } from '../ContactItem/ContactItem';
-import scss from './ContactList.module.scss';
+
 
 export function ContactList({ contacts, deleteBtn }) {
   return (
-    <ul className={scss.contactItem}>
-      {contacts.map(({ id, name, number}) => {
+    <ul>
+      {contacts.map(({ id, name, number }) => {
         return (
           <ContactItem
             key={id}

@@ -7,7 +7,6 @@ import * as yup from 'yup';
 import { useSelector } from 'react-redux';
 import { getIsLoading } from 'Redux/contacts/contactsSelector';
 
-
 const FormError = ({ name }) => {
   return <ErrorMessage name={name} render={message => <p>{message}</p>} />;
 };

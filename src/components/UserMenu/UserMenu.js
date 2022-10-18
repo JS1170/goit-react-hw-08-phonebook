@@ -10,7 +10,13 @@ export function UserMenu() {
   return (
     <div className={scss.logOutBlock}>
       <p>Hello, {name}</p>
-      <button className={scss.logoutBtn} type='button' onClick={()=>dispatch(logOut())}>Log out</button>
+      <button
+        className={scss.logoutBtn}
+        type="button"
+        onClick={() => dispatch(logOut())}
+      >
+        Log out
+      </button>
     </div>
   );
 }

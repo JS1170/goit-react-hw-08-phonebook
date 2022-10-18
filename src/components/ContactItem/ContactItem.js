@@ -19,7 +19,7 @@ export function ContactItem({ id, name, number, deleteBtn }) {
           // setLocalLoading(true);
         }}
       >
-        Delete 
+        Delete
         {}
       </button>
     </li>

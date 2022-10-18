@@ -62,19 +62,18 @@ export function ContactsView() {
         <ContactForm submitForm={submitFormValue} />
       </div>
       <div className={scss.contactsViewAll}>
-      <div>
-        <h2>All your contacts</h2>
-        <Filter
-          onChangeFilter={event => dispatch(changeFilter(event.target.value))}
-        />
-      </div>
-      <div>
-        <ContactList
-          contacts={filterContacts()}
-          deleteBtn={id => dispatch(deleteContact(id))}
-        />
-      </div>
-
+        <div>
+          <h2>All your contacts</h2>
+          <Filter
+            onChangeFilter={event => dispatch(changeFilter(event.target.value))}
+          />
+        </div>
+        <div>
+          <ContactList
+            contacts={filterContacts()}
+            deleteBtn={id => dispatch(deleteContact(id))}
+          />
+        </div>
       </div>
     </div>
   );

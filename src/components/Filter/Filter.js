@@ -5,7 +5,12 @@ export function Filter({ onChangeFilter }) {
   return (
     <label className={scss.label}>
       <span> Find contacts by name</span>
-      <input className={scss.formInput} type="text" name="filter" onChange={onChangeFilter}></input>
+      <input
+        className={scss.formInput}
+        type="text"
+        name="filter"
+        onChange={onChangeFilter}
+      ></input>
     </label>
   );
 }

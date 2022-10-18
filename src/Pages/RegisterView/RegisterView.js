@@ -38,7 +38,7 @@ export function RegisterView() {
     <div className={scss.formRegister}>
       <form className={scss.form} onSubmit={handleSubmit}>
         <label className={scss.formLabel}>
-         <span>Name</span>
+          <span>Name</span>
           <input
             className={scss.formInput}
             onChange={handleChange}
@@ -48,8 +48,7 @@ export function RegisterView() {
           ></input>
         </label>
         <label className={scss.formLabel}>
-
-         <span> Mail</span>
+          <span> Mail</span>
           <input
             className={scss.formInput}
             onChange={handleChange}
@@ -68,7 +67,9 @@ export function RegisterView() {
             value={password}
           ></input>
         </label>
-        <button className={scss.btn} type="submit">Registration</button>
+        <button className={scss.btn} type="submit">
+          Registration
+        </button>
       </form>
     </div>
   );
