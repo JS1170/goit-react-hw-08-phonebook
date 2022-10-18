@@ -1,6 +1,4 @@
 import PropTypes from 'prop-types';
-// import { useState } from 'react';
-// import { nanoid } from 'nanoid';
 import scss from './ContactForm.module.scss';
 import { Formik, ErrorMessage, Form, Field } from 'formik';
 import * as yup from 'yup';
