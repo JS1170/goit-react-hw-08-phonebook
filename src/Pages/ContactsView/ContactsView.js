@@ -16,7 +16,7 @@ import {
   getFilter,
 } from 'Redux/contacts/contactsSelector';
 import { useNavigate } from 'react-router-dom';
-// import scss from './ContactsView.module.scss';
+import scss from './ContactsView.module.scss';
 
 export function ContactsView() {
   // const state = useSelector(state => state);
@@ -56,18 +56,26 @@ export function ContactsView() {
   };
 
   return (
-    <div style={{ marginLeft: '40px' }}>
-      <h1>Phonebook</h1>
-      <ContactForm submitForm={submitFormValue} />
+    <div className={scss.contactsView}>
+      <div>
+        <h1>Add a new contact</h1>
+        <ContactForm submitForm={submitFormValue} />
+      </div>
+      <div className={scss.contactsViewAll}>
+      <div>
+        <h2>All your contacts</h2>
+        <Filter
+          onChangeFilter={event => dispatch(changeFilter(event.target.value))}
+        />
+      </div>
+      <div>
+        <ContactList
+          contacts={filterContacts()}
+          deleteBtn={id => dispatch(deleteContact(id))}
+        />
+      </div>
 
-      <h2>Contacts</h2>
-      <Filter
-        onChangeFilter={event => dispatch(changeFilter(event.target.value))}
-      />
-      <ContactList
-        contacts={filterContacts()}
-        deleteBtn={id => dispatch(deleteContact(id))}
-      />
+      </div>
     </div>
   );
 }

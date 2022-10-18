@@ -8,7 +8,7 @@ export function UserMenu() {
   const name = useSelector(getUserName);
 
   return (
-    <div>
+    <div className={scss.logOutBlock}>
       <p>Hello, {name}</p>
       <button className={scss.logoutBtn} type='button' onClick={()=>dispatch(logOut())}>Log out</button>
     </div>

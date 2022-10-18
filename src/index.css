@@ -8,11 +8,21 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: rgba(242, 242, 223, 255);
+  color: rgb(56, 56, 56);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  margin: 0;
 }
 
 /* li {
@@ -21,3 +31,9 @@ code {
   padding: 0;
 
 } */
+
+.active {
+  color: #eb7353 !important;
+}
+
+

@@ -9,19 +9,19 @@ export function Layout() {
   const isLoggedIn = useSelector(getIsLoggedIn);
 
   return (
-    <>
+    <div className={scss.layoutContainer}>
       <header className={scss.headerLayout}>
-        <nav>
-          <NavLink class={scss.navlink} end to="/">
-            Phonebook
+        <nav className={scss.navLayout}>
+          <NavLink className={scss.navlink} end to="/">
+            Phone<span className={scss.navBook}>book</span>
           </NavLink>
-          {isLoggedIn && <NavLink class={scss.navlink} to="/contacts">Contacts</NavLink>}
+          {isLoggedIn && <NavLink className={scss.navlink} to="/contacts">Contacts</NavLink>}
           {isLoggedIn ? (
             <UserMenu />
           ) : (
               <div className={scss.register}>
-              <NavLink to="/login">Log in</NavLink>
-              <NavLink to="/register">Register</NavLink>
+              <NavLink className={scss.navlink}  to="/login">Log in</NavLink>
+              <NavLink className={scss.navlink}  to="/register">Register</NavLink>
             </div>
           )}
         </nav>
@@ -31,6 +31,6 @@ export function Layout() {
           <Outlet />
         </Suspense>
       </main>
-    </>
+    </div>
   );
 }

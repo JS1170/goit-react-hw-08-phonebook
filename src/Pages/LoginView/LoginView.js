@@ -2,6 +2,8 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { logIn } from 'Redux/auth/authOperations';
+import scss from './LoginView.module.scss';
+
 
 
 export function LoginView() {
@@ -31,27 +33,29 @@ export function LoginView() {
   }
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Mail
+    <div className={scss.formRegister}>
+      <form className={scss.form} onSubmit={handleSubmit}>
+            <label className={scss.formLabel}>
+           <span> Mail</span>
           <input
+             className={scss.formInput}
             onChange={handleChange}
             type="email"
             name="email"
             value={email}
           ></input>
         </label>
-        <label>
-          Password
+         <label className={scss.formLabel}>
+        <span>Password</span>
           <input
+             className={scss.formInput}
             onChange={handleChange}
             type="text"
             name="password"
             value={password}
           ></input>
         </label>
-        <button type="submit">Log in</button>
+        <button className={scss.btn} type="submit">Log in</button>
       </form>
     </div>
   );

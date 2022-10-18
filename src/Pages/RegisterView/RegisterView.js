@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { register } from '../../Redux/auth/authOperations';
+import scss from './RegisterView.module.scss';
 
 export function RegisterView() {
   const [name, setName] = useState('');
@@ -34,36 +35,40 @@ export function RegisterView() {
   }
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Name
+    <div className={scss.formRegister}>
+      <form className={scss.form} onSubmit={handleSubmit}>
+        <label className={scss.formLabel}>
+         <span>Name</span>
           <input
+            className={scss.formInput}
             onChange={handleChange}
             type="text"
             name="name"
             value={name}
           ></input>
         </label>
-        <label>
-          Mail
+        <label className={scss.formLabel}>
+
+         <span> Mail</span>
           <input
+            className={scss.formInput}
             onChange={handleChange}
             type="email"
             name="email"
             value={email}
           ></input>
         </label>
-        <label>
-          Password
+        <label className={scss.formLabel}>
+          <span>Password</span>
           <input
+            className={scss.formInput}
             onChange={handleChange}
             type="text"
             name="password"
             value={password}
           ></input>
         </label>
-        <button type="submit">Registration</button>
+        <button className={scss.btn} type="submit">Registration</button>
       </form>
     </div>
   );

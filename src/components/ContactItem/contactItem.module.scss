@@ -1,14 +1,17 @@
 .item {
   margin-bottom: 12px;
+  list-style-type: none;
 }
 
 .btnItem {
-  width: 60px;
   margin-left: 12px;
-  background-color: rgb(238, 238, 238);
-  border: 1px solid rgb(147, 147, 147);
-  border-radius: 6px;
-  height: 28px;
   cursor: pointer;
+  border-radius: 4px;
+  padding: 8px;
+  min-width: 92px;
+  border: 1px solid transparent;
+  font-size: 14px;
+  font-weight: 400;
+  color: white;
+  background-color: #71928a;
 }
-
